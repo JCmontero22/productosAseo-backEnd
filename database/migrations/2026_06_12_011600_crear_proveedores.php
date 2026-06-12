@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('telefono_proveedor', 20)->nullable();
             $table->string('email_proveedor', 150)->nullable();
             $table->string('direccion_proveedor', 255)->nullable();
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

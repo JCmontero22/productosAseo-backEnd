@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('contenido', 100);
             $table->string('unidad_medida', 50);
             $table->string('imagen_presentacion', 255)->nullable();
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

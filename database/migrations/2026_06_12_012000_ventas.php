@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('id_tipo_pago')->constrained('tipos_pagos', 'id_tipo_pago')->cascadeOnUpdate()->restrictOnDelete();
             $table->decimal('total_venta', 10, 2);
             $table->date('fecha_venta');
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

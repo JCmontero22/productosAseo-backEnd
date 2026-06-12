@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('id_usuario')->constrained('usuarios', 'id_usuario')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamp('fecha_traslado');
             $table->string('observaciones_traslado', 255)->nullable();
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->foreignId('id_sede')->constrained('sedes', 'id_sede')->cascadeOnUpdate()->restrictOnDelete();
             $table->string('nombre_usuario', 150);
             $table->string('user_usuario', 150)->unique();
-            $table->string('password_usuario', 150);
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('password_usuario', 255);
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamp('fecha_ultima_sesion')->nullable();
-            $table->rememberToken();
+            //$table->rememberToken();
             $table->timestamps();
             $table->index('id_tipo_usuario');
             $table->index('id_sede');

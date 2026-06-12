@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_cliente');
             $table->string('nombre_cliente', 150);
             $table->string('telefono_cliente', 20);
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

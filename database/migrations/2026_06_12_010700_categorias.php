@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_categoria');
             $table->string('nombre_categoria', 150);
             $table->string('descripcion_categoria', 255)->nullable();
-            $table->foreignId('id_estado')->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }
