@@ -15,7 +15,7 @@ class AuthService
             $usuario = Usuario::where('user_usuario', $request->input('user_usuario'))->first();
 
             if (!$usuario || !Hash::check($request->input('password_usuario'), $usuario->password_usuario)) {
-                return ApiResponse::error(401, 'Error', 'Credenciales inválidas', null);
+                return ApiResponse::warning(401, 'Error', 'Credenciales inválidas', []);
             }
 
             $token = $usuario->createToken('auth_token')->plainTextToken;
