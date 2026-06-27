@@ -2,6 +2,7 @@
 
 namespace App\Models\Permisos;
 
+use App\Models\Estados\EstadoModel;
 use Illuminate\Database\Eloquent\Model;
 
 class PermisoModel extends Model

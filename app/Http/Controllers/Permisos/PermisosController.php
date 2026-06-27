@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Permisos;
 
 use App\Http\Controllers\Controller;
-use App\Models\Permisos\PermisoModel;
+use App\Http\Requests\Permisos\PermisoRequest;
+use App\Http\Services\Permiso\PermisoService;
 use Illuminate\Http\Request;
 
 class PermisosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct(
+        private readonly PermisoService $permisosService
+    ){}
+
     public function index()
     {
         //
@@ -27,15 +30,14 @@ class PermisosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(PermisoRequest $request){
+        return $this->permisosService->registroPermiso($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Permiso $permiso)
+    public function show( $permiso)
     {
         //
     }
@@ -43,7 +45,7 @@ class PermisosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Permiso $permiso)
+    public function edit( $permiso)
     {
         //
     }
@@ -51,7 +53,7 @@ class PermisosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Permiso $permiso)
+    public function update(Request $request, $permiso)
     {
         //
     }
@@ -59,7 +61,7 @@ class PermisosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Permiso $permiso)
+    public function destroy( $permiso)
     {
         //
     }

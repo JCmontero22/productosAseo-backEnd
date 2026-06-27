@@ -2,13 +2,15 @@
 
 namespace App\Models\Usuarios;
 
+use App\Models\Estados\EstadoModel;
+use App\Models\Sedes\sedeModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class Usuario extends Authenticatable
+class UsuarioModel extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -46,16 +48,16 @@ class Usuario extends Authenticatable
 
     public function estado()
     {
-        return $this->belongsTo(Estados::class, 'id_estado', 'id_estado');
+        return $this->belongsTo(EstadoModel::class, 'id_estado', 'id_estado');
     }
 
     public function sede()
     {
-        return $this->belongsTo(Sedes::class, 'id_sede', 'id_sede');
+        return $this->belongsTo(sedeModel::class, 'id_sede', 'id_sede');
     }
 
     public function tipoUsuario()
     {
-        return $this->belongsTo(TiposUsuarios::class, 'id_tipo_usuario', 'id_tipo_usuario');
+        return $this->belongsTo(TipoUsuariosModel::class, 'id_tipo_usuario', 'id_tipo_usuario');
     }
 }

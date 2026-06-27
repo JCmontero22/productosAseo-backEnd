@@ -2,6 +2,7 @@
 
 namespace App\Models\Permisos;
 
+use App\Models\Usuarios\TipoUsuariosModel;
 use Illuminate\Database\Eloquent\Model;
 
 class tipoUsuarioPermiso extends Model
@@ -16,7 +17,7 @@ class tipoUsuarioPermiso extends Model
 
     public function tipoUsuario()
     {
-        return $this->belongsTo(TiposUsuarioModel::class, 'id_tipo_usuario', 'id_tipo_usuario');
+        return $this->belongsTo(TipoUsuariosModel::class, 'id_tipo_usuario', 'id_tipo_usuario');
     }
 
     public function permiso()

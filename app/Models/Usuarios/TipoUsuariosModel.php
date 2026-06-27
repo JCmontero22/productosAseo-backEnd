@@ -2,6 +2,7 @@
 
 namespace App\Models\Usuarios;
 
+use App\Models\Estados\EstadoModel;
 use Illuminate\Database\Eloquent\Model;
 
 class TipoUsuariosModel extends Model

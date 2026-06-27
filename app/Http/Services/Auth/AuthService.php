@@ -4,6 +4,7 @@ namespace App\Http\Services\Auth;
 
 use App\Http\Responses\ApiResponse;
 use App\Models\Usuarios\Usuario;
+use App\Models\Usuarios\UsuarioModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
@@ -12,7 +13,7 @@ class AuthService
     public function login($request)
     {
         try {
-            $usuario = Usuario::where('user_usuario', $request->input('user_usuario'))->first();
+            $usuario = UsuarioModel::where('user_usuario', $request->input('user_usuario'))->first();
 
             if (!$usuario || !Hash::check($request->input('password_usuario'), $usuario->password_usuario)) {
                 return ApiResponse::warning(401, 'Error', 'Credenciales inválidas', []);
@@ -24,9 +25,9 @@ class AuthService
                 'token' => $token
             ];
 
-            Usuario::where('id_usuario', $usuario->id_usuario)->update(['fecha_ultima_sesion' => now()]);
+            UsuarioModel::where('id_usuario', $usuario->id_usuario)->update(['fecha_ultima_sesion' => now()]);
 
-            return ApiResponse::success(200, 'Éxito', 'Inicio de sesión exitoso', 'success', $data);
+            return ApiResponse::success(200, 'Éxito', 'Inicio de sesión exitoso', $data);
         } catch (\Throwable $e) {
             Log::error('Error en login: ' . $e->getMessage(), [
                 'exception' => get_class($e),

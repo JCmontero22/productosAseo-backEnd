@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre_permiso', 150);
             $table->string('slug_permiso', 150)->unique();
             $table->string('descripcion_permiso', 255)->nullable();
-            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('id_estado')->default(1)->constrained('estados', 'id_estado')->cascadeOnUpdate()->restrictOnDelete()->default(1);
             $table->timestamps();
         });
     }
